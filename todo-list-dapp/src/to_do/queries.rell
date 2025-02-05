@@ -20,7 +20,7 @@ query get_user_tasks(
 
   return (
     pointer = pointer + tasks.size(),
-    tasks = tasks,
+    tasks = tasks
   );
 }
 

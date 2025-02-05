@@ -8,7 +8,7 @@ export function useQuery<TReturn extends RawGtv, TArgs extends DictPair | undefi
   name: string,
   args?: TArgs
 ) {
-  const session = useSessionContext();
+  const { session } = useSessionContext();
   const [serializedArgs, setSerializedArgs] = useState(JSON.stringify(args));
   const [data, setData] = useState<TReturn | undefined>();
 

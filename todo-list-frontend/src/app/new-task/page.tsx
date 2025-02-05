@@ -7,10 +7,10 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Loader } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const page = () => {
-  const session = useSessionContext();
+  const { session } = useSessionContext();
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [task, setTask] = useState({
@@ -18,6 +18,12 @@ const page = () => {
     description: "",
     due_date: new Date().toISOString().split("T")[0], // Default to today
   });
+
+  useEffect(() => {
+    if (!session) {
+      router.push('/auth')
+    }
+  }, [session])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -53,6 +59,8 @@ const page = () => {
       setIsLoading(false);
     }
   };
+
+  
 
   return (
     <div className="min-h-screen bg-[#1c1c28] text-[#f5f5f5] flex flex-col items-center py-10 px-5">
