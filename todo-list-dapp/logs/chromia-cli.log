@@ -1,0 +1,133 @@
+ERROR 2025-02-04 16:56:46.146 - [main] CliLauncher Following errors found in chromia.yml:
+Additional property 'host' found but was invalid (location: compile->host)
+com.chromia.build.tools.compile.ValidationException: Following errors found in chromia.yml:
+Additional property 'host' found but was invalid (location: compile->host)
+	at com.chromia.cli.parser.AnchorGtvYamlKt.loadAnchor(anchorGtvYaml.kt:81) ~[chromia-build-tools-0.18.2.jar:0.18.2]
+	at com.chromia.cli.model.LoadKt.parseModel(load.kt:13) ~[chromia-build-tools-0.18.2.jar:0.18.2]
+	at com.chromia.cli.tools.config.ChromiaModelOption$model$2.invoke(configOption.kt:40) ~[chromia-cli-tools-0.18.2.jar:0.18.2]
+	at com.chromia.cli.tools.config.ChromiaModelOption$model$2.invoke(configOption.kt:40) ~[chromia-cli-tools-0.18.2.jar:0.18.2]
+	at kotlin.SynchronizedLazyImpl.getValue(LazyJVM.kt:74) ~[kotlin-stdlib-1.9.23.jar:1.9.23-release-779]
+	at com.chromia.cli.tools.config.ChromiaModelOption.getModel(configOption.kt:40) ~[chromia-cli-tools-0.18.2.jar:0.18.2]
+	at com.chromia.cli.command.node.AbstractNodeCommand$nodeConfig$2.invoke(AbstractNodeCommand.kt:42) ~[chromia-cli-0.18.2.jar:0.18.2]
+	at com.chromia.cli.command.node.AbstractNodeCommand$nodeConfig$2.invoke(AbstractNodeCommand.kt:42) ~[chromia-cli-0.18.2.jar:0.18.2]
+	at kotlin.SynchronizedLazyImpl.getValue(LazyJVM.kt:74) ~[kotlin-stdlib-1.9.23.jar:1.9.23-release-779]
+	at com.chromia.cli.command.node.AbstractNodeCommand.getNodeConfig(AbstractNodeCommand.kt:42) ~[chromia-cli-0.18.2.jar:0.18.2]
+	at com.chromia.cli.command.node.StartCommand$startPostchainNode$1.invoke(StartCommand.kt:45) ~[chromia-cli-0.18.2.jar:0.18.2]
+	at com.chromia.cli.command.node.StartCommand$startPostchainNode$1.invoke(StartCommand.kt:44) ~[chromia-cli-0.18.2.jar:0.18.2]
+	at net.postchain.rell.base.utils.ThreadLocalContext.set(utils.kt:231) ~[rell-base-0.13.11.jar:0.13.11]
+	at net.postchain.rell.module.RellPostchainModuleEnvironment$Companion.set(postchain.kt:396) ~[rell-gtx-0.13.11.jar:0.13.11]
+	at com.chromia.cli.command.node.StartCommand.startPostchainNode(StartCommand.kt:44) ~[chromia-cli-0.18.2.jar:0.18.2]
+	at com.chromia.cli.command.node.StartCommand.run(StartCommand.kt:36) ~[chromia-cli-0.18.2.jar:0.18.2]
+	at com.github.ajalt.clikt.parsers.Parser.parse(Parser.kt:306) ~[clikt-jvm-4.2.0.jar:?]
+	at com.github.ajalt.clikt.parsers.Parser.parse(Parser.kt:319) ~[clikt-jvm-4.2.0.jar:?]
+	at com.github.ajalt.clikt.parsers.Parser.parse(Parser.kt:319) ~[clikt-jvm-4.2.0.jar:?]
+	at com.github.ajalt.clikt.parsers.Parser.parse(Parser.kt:40) ~[clikt-jvm-4.2.0.jar:?]
+	at com.github.ajalt.clikt.core.CliktCommand.parse(CliktCommand.kt:458) ~[clikt-jvm-4.2.0.jar:?]
+	at com.github.ajalt.clikt.core.CliktCommand.parse$default(CliktCommand.kt:455) ~[clikt-jvm-4.2.0.jar:?]
+	at com.github.ajalt.clikt.core.CliktCommand.main(CliktCommand.kt:475) ~[clikt-jvm-4.2.0.jar:?]
+	at com.chromia.cli.tools.launcher.CliLauncher.catchingAllExceptionsMain(CliLauncher.kt:69) [chromia-cli-tools-0.18.2.jar:0.18.2]
+	at com.chromia.MainKt.main(main.kt:44) [chromia-cli-0.18.2.jar:0.18.2]
+ERROR 2025-02-05 11:49:11.510 - [main] CliLauncher Following errors found in chromia.yml:
+Additional property 'ft4' found but was invalid (location: libs->ft4)
+String doesn't match pattern ^x"[a-fA-F0-9]+"$ - "XFAB4D75E6D36B5 ... A9AB0149FACC95F" (location: libs->ft4->rid)
+com.chromia.build.tools.compile.ValidationException: Following errors found in chromia.yml:
+Additional property 'ft4' found but was invalid (location: libs->ft4)
+String doesn't match pattern ^x"[a-fA-F0-9]+"$ - "XFAB4D75E6D36B5 ... A9AB0149FACC95F" (location: libs->ft4->rid)
+	at com.chromia.cli.parser.AnchorGtvYamlKt.loadAnchor(anchorGtvYaml.kt:81) ~[chromia-build-tools-0.18.2.jar:0.18.2]
+	at com.chromia.cli.model.LoadKt.parseModel(load.kt:13) ~[chromia-build-tools-0.18.2.jar:0.18.2]
+	at com.chromia.cli.tools.config.ChromiaModelOption$model$2.invoke(configOption.kt:40) ~[chromia-cli-tools-0.18.2.jar:0.18.2]
+	at com.chromia.cli.tools.config.ChromiaModelOption$model$2.invoke(configOption.kt:40) ~[chromia-cli-tools-0.18.2.jar:0.18.2]
+	at kotlin.SynchronizedLazyImpl.getValue(LazyJVM.kt:74) ~[kotlin-stdlib-1.9.23.jar:1.9.23-release-779]
+	at com.chromia.cli.tools.config.ChromiaModelOption.getModel(configOption.kt:40) ~[chromia-cli-tools-0.18.2.jar:0.18.2]
+	at com.chromia.cli.command.node.AbstractNodeCommand$nodeConfig$2.invoke(AbstractNodeCommand.kt:42) ~[chromia-cli-0.18.2.jar:0.18.2]
+	at com.chromia.cli.command.node.AbstractNodeCommand$nodeConfig$2.invoke(AbstractNodeCommand.kt:42) ~[chromia-cli-0.18.2.jar:0.18.2]
+	at kotlin.SynchronizedLazyImpl.getValue(LazyJVM.kt:74) ~[kotlin-stdlib-1.9.23.jar:1.9.23-release-779]
+	at com.chromia.cli.command.node.AbstractNodeCommand.getNodeConfig(AbstractNodeCommand.kt:42) ~[chromia-cli-0.18.2.jar:0.18.2]
+	at com.chromia.cli.command.node.StartCommand$startPostchainNode$1.invoke(StartCommand.kt:45) ~[chromia-cli-0.18.2.jar:0.18.2]
+	at com.chromia.cli.command.node.StartCommand$startPostchainNode$1.invoke(StartCommand.kt:44) ~[chromia-cli-0.18.2.jar:0.18.2]
+	at net.postchain.rell.base.utils.ThreadLocalContext.set(utils.kt:231) ~[rell-base-0.13.11.jar:0.13.11]
+	at net.postchain.rell.module.RellPostchainModuleEnvironment$Companion.set(postchain.kt:396) ~[rell-gtx-0.13.11.jar:0.13.11]
+	at com.chromia.cli.command.node.StartCommand.startPostchainNode(StartCommand.kt:44) ~[chromia-cli-0.18.2.jar:0.18.2]
+	at com.chromia.cli.command.node.StartCommand.run(StartCommand.kt:36) ~[chromia-cli-0.18.2.jar:0.18.2]
+	at com.github.ajalt.clikt.parsers.Parser.parse(Parser.kt:306) ~[clikt-jvm-4.2.0.jar:?]
+	at com.github.ajalt.clikt.parsers.Parser.parse(Parser.kt:319) ~[clikt-jvm-4.2.0.jar:?]
+	at com.github.ajalt.clikt.parsers.Parser.parse(Parser.kt:319) ~[clikt-jvm-4.2.0.jar:?]
+	at com.github.ajalt.clikt.parsers.Parser.parse(Parser.kt:40) ~[clikt-jvm-4.2.0.jar:?]
+	at com.github.ajalt.clikt.core.CliktCommand.parse(CliktCommand.kt:458) ~[clikt-jvm-4.2.0.jar:?]
+	at com.github.ajalt.clikt.core.CliktCommand.parse$default(CliktCommand.kt:455) ~[clikt-jvm-4.2.0.jar:?]
+	at com.github.ajalt.clikt.core.CliktCommand.main(CliktCommand.kt:475) ~[clikt-jvm-4.2.0.jar:?]
+	at com.chromia.cli.tools.launcher.CliLauncher.catchingAllExceptionsMain(CliLauncher.kt:69) [chromia-cli-tools-0.18.2.jar:0.18.2]
+	at com.chromia.MainKt.main(main.kt:44) [chromia-cli-0.18.2.jar:0.18.2]
+ERROR 2025-02-05 11:49:33.775 - [main] CliLauncher Following errors found in chromia.yml:
+Additional property 'ft4' found but was invalid (location: libs->ft4)
+String doesn't match pattern ^x"[a-fA-F0-9]+"$ - "XFAB4D75E6D36B5 ... A9AB0149FACC95F" (location: libs->ft4->rid)
+com.chromia.build.tools.compile.ValidationException: Following errors found in chromia.yml:
+Additional property 'ft4' found but was invalid (location: libs->ft4)
+String doesn't match pattern ^x"[a-fA-F0-9]+"$ - "XFAB4D75E6D36B5 ... A9AB0149FACC95F" (location: libs->ft4->rid)
+	at com.chromia.cli.parser.AnchorGtvYamlKt.loadAnchor(anchorGtvYaml.kt:81) ~[chromia-build-tools-0.18.2.jar:0.18.2]
+	at com.chromia.cli.model.LoadKt.parseModel(load.kt:13) ~[chromia-build-tools-0.18.2.jar:0.18.2]
+	at com.chromia.cli.tools.config.ChromiaModelOption$model$2.invoke(configOption.kt:40) ~[chromia-cli-tools-0.18.2.jar:0.18.2]
+	at com.chromia.cli.tools.config.ChromiaModelOption$model$2.invoke(configOption.kt:40) ~[chromia-cli-tools-0.18.2.jar:0.18.2]
+	at kotlin.SynchronizedLazyImpl.getValue(LazyJVM.kt:74) ~[kotlin-stdlib-1.9.23.jar:1.9.23-release-779]
+	at com.chromia.cli.tools.config.ChromiaModelOption.getModel(configOption.kt:40) ~[chromia-cli-tools-0.18.2.jar:0.18.2]
+	at com.chromia.cli.command.node.AbstractNodeCommand$nodeConfig$2.invoke(AbstractNodeCommand.kt:42) ~[chromia-cli-0.18.2.jar:0.18.2]
+	at com.chromia.cli.command.node.AbstractNodeCommand$nodeConfig$2.invoke(AbstractNodeCommand.kt:42) ~[chromia-cli-0.18.2.jar:0.18.2]
+	at kotlin.SynchronizedLazyImpl.getValue(LazyJVM.kt:74) ~[kotlin-stdlib-1.9.23.jar:1.9.23-release-779]
+	at com.chromia.cli.command.node.AbstractNodeCommand.getNodeConfig(AbstractNodeCommand.kt:42) ~[chromia-cli-0.18.2.jar:0.18.2]
+	at com.chromia.cli.command.node.UpdateCommand.run(UpdateCommand.kt:31) ~[chromia-cli-0.18.2.jar:0.18.2]
+	at com.github.ajalt.clikt.parsers.Parser.parse(Parser.kt:306) ~[clikt-jvm-4.2.0.jar:?]
+	at com.github.ajalt.clikt.parsers.Parser.parse(Parser.kt:319) ~[clikt-jvm-4.2.0.jar:?]
+	at com.github.ajalt.clikt.parsers.Parser.parse(Parser.kt:319) ~[clikt-jvm-4.2.0.jar:?]
+	at com.github.ajalt.clikt.parsers.Parser.parse(Parser.kt:40) ~[clikt-jvm-4.2.0.jar:?]
+	at com.github.ajalt.clikt.core.CliktCommand.parse(CliktCommand.kt:458) ~[clikt-jvm-4.2.0.jar:?]
+	at com.github.ajalt.clikt.core.CliktCommand.parse$default(CliktCommand.kt:455) ~[clikt-jvm-4.2.0.jar:?]
+	at com.github.ajalt.clikt.core.CliktCommand.main(CliktCommand.kt:475) ~[clikt-jvm-4.2.0.jar:?]
+	at com.chromia.cli.tools.launcher.CliLauncher.catchingAllExceptionsMain(CliLauncher.kt:69) [chromia-cli-tools-0.18.2.jar:0.18.2]
+	at com.chromia.MainKt.main(main.kt:44) [chromia-cli-0.18.2.jar:0.18.2]
+ERROR 2025-02-05 11:49:44.141 - [main] CliLauncher Following errors found in chromia.yml:
+Additional property 'ft4' found but was invalid (location: libs->ft4)
+String doesn't match pattern ^x"[a-fA-F0-9]+"$ - "XFAB4D75E6D36B5 ... A9AB0149FACC95F" (location: libs->ft4->rid)
+com.chromia.build.tools.compile.ValidationException: Following errors found in chromia.yml:
+Additional property 'ft4' found but was invalid (location: libs->ft4)
+String doesn't match pattern ^x"[a-fA-F0-9]+"$ - "XFAB4D75E6D36B5 ... A9AB0149FACC95F" (location: libs->ft4->rid)
+	at com.chromia.cli.parser.AnchorGtvYamlKt.loadAnchor(anchorGtvYaml.kt:81) ~[chromia-build-tools-0.18.2.jar:0.18.2]
+	at com.chromia.cli.model.LoadKt.parseModel(load.kt:13) ~[chromia-build-tools-0.18.2.jar:0.18.2]
+	at com.chromia.cli.tools.config.ChromiaModelOption$model$2.invoke(configOption.kt:40) ~[chromia-cli-tools-0.18.2.jar:0.18.2]
+	at com.chromia.cli.tools.config.ChromiaModelOption$model$2.invoke(configOption.kt:40) ~[chromia-cli-tools-0.18.2.jar:0.18.2]
+	at kotlin.SynchronizedLazyImpl.getValue(LazyJVM.kt:74) ~[kotlin-stdlib-1.9.23.jar:1.9.23-release-779]
+	at com.chromia.cli.tools.config.ChromiaModelOption.getModel(configOption.kt:40) ~[chromia-cli-tools-0.18.2.jar:0.18.2]
+	at com.chromia.cli.command.InstallCommand$special$$inlined$validate$1.invoke(Validate.kt:72) ~[chromia-cli-0.18.2.jar:0.18.2]
+	at com.chromia.cli.command.InstallCommand$special$$inlined$validate$1.invoke(Validate.kt:25) ~[chromia-cli-0.18.2.jar:0.18.2]
+	at com.github.ajalt.clikt.parameters.options.OptionWithValuesImpl.postValidate(OptionWithValues.kt:237) ~[clikt-jvm-4.2.0.jar:?]
+	at com.github.ajalt.clikt.parsers.Parser.parse(Parser.kt:289) ~[clikt-jvm-4.2.0.jar:?]
+	at com.github.ajalt.clikt.parsers.Parser.parse(Parser.kt:319) ~[clikt-jvm-4.2.0.jar:?]
+	at com.github.ajalt.clikt.parsers.Parser.parse(Parser.kt:40) ~[clikt-jvm-4.2.0.jar:?]
+	at com.github.ajalt.clikt.core.CliktCommand.parse(CliktCommand.kt:458) ~[clikt-jvm-4.2.0.jar:?]
+	at com.github.ajalt.clikt.core.CliktCommand.parse$default(CliktCommand.kt:455) ~[clikt-jvm-4.2.0.jar:?]
+	at com.github.ajalt.clikt.core.CliktCommand.main(CliktCommand.kt:475) ~[clikt-jvm-4.2.0.jar:?]
+	at com.chromia.cli.tools.launcher.CliLauncher.catchingAllExceptionsMain(CliLauncher.kt:69) [chromia-cli-tools-0.18.2.jar:0.18.2]
+	at com.chromia.MainKt.main(main.kt:44) [chromia-cli-0.18.2.jar:0.18.2]
+ERROR 2025-02-05 11:52:39.059 - [main] CliLauncher Following errors found in chromia.yml:
+Additional property 'ft4' found but was invalid (location: libs->ft4)
+String doesn't match pattern ^x"[a-fA-F0-9]+"$ - "XFAB4D75E6D36B5 ... A9AB0149FACC95F" (location: libs->ft4->rid)
+com.chromia.build.tools.compile.ValidationException: Following errors found in chromia.yml:
+Additional property 'ft4' found but was invalid (location: libs->ft4)
+String doesn't match pattern ^x"[a-fA-F0-9]+"$ - "XFAB4D75E6D36B5 ... A9AB0149FACC95F" (location: libs->ft4->rid)
+	at com.chromia.cli.parser.AnchorGtvYamlKt.loadAnchor(anchorGtvYaml.kt:81) ~[chromia-build-tools-0.18.2.jar:0.18.2]
+	at com.chromia.cli.model.LoadKt.parseModel(load.kt:13) ~[chromia-build-tools-0.18.2.jar:0.18.2]
+	at com.chromia.cli.tools.config.ChromiaModelOption$model$2.invoke(configOption.kt:40) ~[chromia-cli-tools-0.18.2.jar:0.18.2]
+	at com.chromia.cli.tools.config.ChromiaModelOption$model$2.invoke(configOption.kt:40) ~[chromia-cli-tools-0.18.2.jar:0.18.2]
+	at kotlin.SynchronizedLazyImpl.getValue(LazyJVM.kt:74) ~[kotlin-stdlib-1.9.23.jar:1.9.23-release-779]
+	at com.chromia.cli.tools.config.ChromiaModelOption.getModel(configOption.kt:40) ~[chromia-cli-tools-0.18.2.jar:0.18.2]
+	at com.chromia.cli.command.InstallCommand$special$$inlined$validate$1.invoke(Validate.kt:72) ~[chromia-cli-0.18.2.jar:0.18.2]
+	at com.chromia.cli.command.InstallCommand$special$$inlined$validate$1.invoke(Validate.kt:25) ~[chromia-cli-0.18.2.jar:0.18.2]
+	at com.github.ajalt.clikt.parameters.options.OptionWithValuesImpl.postValidate(OptionWithValues.kt:237) ~[clikt-jvm-4.2.0.jar:?]
+	at com.github.ajalt.clikt.parsers.Parser.parse(Parser.kt:289) ~[clikt-jvm-4.2.0.jar:?]
+	at com.github.ajalt.clikt.parsers.Parser.parse(Parser.kt:319) ~[clikt-jvm-4.2.0.jar:?]
+	at com.github.ajalt.clikt.parsers.Parser.parse(Parser.kt:40) ~[clikt-jvm-4.2.0.jar:?]
+	at com.github.ajalt.clikt.core.CliktCommand.parse(CliktCommand.kt:458) ~[clikt-jvm-4.2.0.jar:?]
+	at com.github.ajalt.clikt.core.CliktCommand.parse$default(CliktCommand.kt:455) ~[clikt-jvm-4.2.0.jar:?]
+	at com.github.ajalt.clikt.core.CliktCommand.main(CliktCommand.kt:475) ~[clikt-jvm-4.2.0.jar:?]
+	at com.chromia.cli.tools.launcher.CliLauncher.catchingAllExceptionsMain(CliLauncher.kt:69) [chromia-cli-tools-0.18.2.jar:0.18.2]
+	at com.chromia.MainKt.main(main.kt:44) [chromia-cli-0.18.2.jar:0.18.2]
+WARN  2025-02-05 11:54:40.956 - [JGit-FileStoreAttributeReader-1] FS Thread[#36,JGit-FileStoreAttributeReader-1,5,main]: got smaller file timestamp on /usr/app (C:\134), /usr/app/build/.lib/ft4/.git: 2025-02-05T11:54:40Z < 2025-02-05T11:54:40.7510135Z. Aborting measurement at resolution PT0.2489865S.

@@ -1,0 +1,59 @@
+// Create task
+operation create_task(
+  title: text,
+  description: text,
+  due_date: timestamp
+) {
+  val account = auth.authenticate();
+
+  require(title.size() > 0, "Title cannot be empty");
+  require(description.size() < 255, "Description cannot be more than 255 characters");
+  
+  val user = user @ { account };
+  create task ( user, title, description, due_date, completed = false );
+}
+
+// Update task
+operation update_task(
+  task_id: byte_array,
+  title: text,
+  description: text,
+  due_date: timestamp
+) {
+  val account = auth.authenticate();
+
+  require(title.size() > 0, "Title cannot be empty");
+  require(description.size() < 255, "Description cannot be more than 255 characters");
+
+  val user = user @ { account };
+  val existing_task = task @ { task_id };
+  require(existing_task.owner == user, "You are not the owner of this task");
+
+  update existing_task ( title, description, due_date, updated_at = op_context.last_block_time );
+}
+
+// Delete task
+operation delete_task(
+  task_id: byte_array
+) {
+  val account = auth.authenticate();
+
+  val user = user @ { account };
+  val existing_task = task @ { task_id };
+  require(existing_task.owner == user, "You are not the owner of this task");
+
+  delete existing_task;
+}
+
+// Complete task
+operation complete_task(
+  task_id: byte_array
+) {
+  val account = auth.authenticate();
+
+  val user = user @ { account };
+  val existing_task = task @ { task_id };
+  require(existing_task.owner == user, "You are not the owner of this task");
+
+  update existing_task ( completed = true, updated_at = op_context.last_block_time );
+}

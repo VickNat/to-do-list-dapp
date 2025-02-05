@@ -1,0 +1,9 @@
+struct task_dto {
+  id: byte_array;
+  title: text;
+  description: text;
+  due_date: timestamp;
+  completed: boolean;
+  created_at: timestamp;
+  updated_at: timestamp;
+}

@@ -1,0 +1,147 @@
+@test module;
+
+import main.*;
+import lib.ft4.test.utils.{ ft_auth_operation_for };
+import ^.test_operations.{ create_user };
+
+val alice = rell.test.pubkeys.alice;
+val bob = rell.test.pubkeys.bob;
+val charlie = rell.test.pubkeys.charlie;
+val alice_kp = rell.test.keypairs.alice;
+val bob_kp = rell.test.keypairs.bob;
+val charlie_kp = rell.test.keypairs.charlie;
+
+function test_create_users() {
+  rell.test.tx()
+    .op(create_user("Alice", alice))
+    .op(create_user("Bob", bob))
+    .op(create_user("Charlie", charlie))
+    .run();
+
+  assert_equals(user @ { } ( @sum 1 ), 3);
+}
+
+function test_create_and_manage_tasks() {
+    // Create a user
+  rell.test.tx()
+    .op(create_user("Alice", alice))
+    .run();
+    
+    // Create a task
+  rell.test.tx()
+    .op(ft_auth_operation_for(alice))
+    .op(create_task("Test Task", "Description", 1700000000))
+    .sign(alice_kp)
+    .run();
+
+  assert_equals(get_task_count(alice, false), 1);
+
+    // Retrieve tasks
+  val tasks_result = get_user_tasks(alice, 0, 10);
+  assert_equals(tasks_result.pointer, 1);
+  assert_equals(tasks_result.tasks.size(), 1);
+
+    // Get the task ID
+  val task_id = tasks_result.tasks[0].id;
+
+    // Update the task
+  rell.test.tx()
+    .op(ft_auth_operation_for(alice))
+    .op(update_task(task_id, "Updated Task", "New Description", 1800000000))
+    .sign(alice_kp)
+    .run();
+    
+    // Mark task as completed
+  rell.test.tx()
+    .op(ft_auth_operation_for(alice))
+    .op(complete_task(task_id))
+    .sign(alice_kp)
+    .run();
+
+  assert_true(is_task_completed(task_id));
+  assert_equals(get_task_count(alice, true), 1);
+  assert_equals(get_task_count(alice, false), 0);
+
+    // Delete the task
+  rell.test.tx()
+    .op(ft_auth_operation_for(alice))
+    .op(delete_task(task_id))
+    .sign(alice_kp)
+    .run();
+
+  assert_equals(get_task_count(alice, false), 0);
+}
+
+function test_task_pagination() {
+    // Create a user
+    rell.test.tx()
+        .op(create_user("Alice", alice))
+        .run();
+    
+    // Create 5 tasks
+    for (i in range(5)) {
+        rell.test.tx()
+            .op(ft_auth_operation_for(alice))
+            .op(create_task("Task %d".format(i), "Description", 1700000000 + i))
+            .sign(alice_kp)
+            .run();
+    }
+    
+    // Fetch first batch (3 tasks)
+    val first_batch = get_user_tasks(alice, 0, 3);
+    assert_equals(first_batch.pointer, 3);
+    assert_equals(first_batch.tasks.size(), 3);
+
+    // Fetch second batch (remaining 2 tasks)
+    val second_batch = get_user_tasks(alice, first_batch.pointer, 3);
+    assert_equals(second_batch.pointer, 5);
+    assert_equals(second_batch.tasks.size(), 2);
+
+    // Fetch third batch (should be empty)
+    val third_batch = get_user_tasks(alice, second_batch.pointer, 3);
+    assert_equals(third_batch.pointer, 5);
+    assert_equals(third_batch.tasks.size(), 0);
+}
+
+function test_task_security() {
+    // Create Alice and Bob
+    rell.test.tx()
+        .op(create_user("Alice", alice))
+        .op(create_user("Bob", bob))
+        .run();
+    
+    // Alice creates a task
+    rell.test.tx()
+        .op(ft_auth_operation_for(alice))
+        .op(create_task("Alice's Task", "Description", 1700000000))
+        .sign(alice_kp)
+        .run();
+    
+    // Fetch Alice's task
+    val tasks_result = get_user_tasks(alice, 0, 10);
+    assert_equals(tasks_result.tasks.size(), 1);
+    val task_id = tasks_result.tasks[0].id;
+
+    // Bob tries to mark Alice's task as completed (should fail)
+    rell.test.tx()
+        .op(ft_auth_operation_for(bob))
+        .op(complete_task(task_id))
+        .sign(bob_kp)
+        .run_must_fail();
+    
+    // Bob tries to delete Alice's task (should fail)
+    rell.test.tx()
+        .op(ft_auth_operation_for(bob))
+        .op(delete_task(task_id))
+        .sign(bob_kp)
+        .run_must_fail();
+
+    // Alice successfully deletes her task
+    rell.test.tx()
+        .op(ft_auth_operation_for(alice))
+        .op(delete_task(task_id))
+        .sign(alice_kp)
+        .run();
+
+    assert_equals(get_task_count(alice, false), 0);
+}

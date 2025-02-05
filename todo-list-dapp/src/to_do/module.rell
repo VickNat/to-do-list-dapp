@@ -1,0 +1,6 @@
+module;
+
+import lib.ft4.accounts.{ account };
+import lib.ft4.auth;
+
+function require_user(id: byte_array) = require(user @? { id }, "User with id %s does not exist".format(id));

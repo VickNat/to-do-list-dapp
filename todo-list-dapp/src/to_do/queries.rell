@@ -1,0 +1,103 @@
+// Get user tasks
+query get_user_tasks(
+  user_id: byte_array,
+  pointer: integer,
+  n_tasks: integer
+): (pointer: integer, tasks: list<task_dto> ) {
+  val tasks = (task) @* {
+    task.owner.id == user_id
+  } (
+    task_dto (
+      task.due_date,
+      task.completed,
+      task.title,
+      task.description,
+      task.id,
+      task.created_at,
+      task.updated_at
+    )
+  ) offset pointer limit n_tasks;
+
+  return (
+    pointer = pointer + tasks.size(),
+    tasks = tasks,
+  );
+}
+
+// Get user tasks sorted by due date
+query get_user_sorted_tasks(
+  user_id: byte_array,
+  pointer: integer,
+  n_tasks: integer
+): (pointer: integer, tasks: list<task_dto> ) {
+  val tasks = (task) @* {
+    task.owner.id == user_id
+  } (
+    @sort_desc @omit task.rowid,
+    task_dto (
+      task.due_date,
+      task.completed,
+      task.title,
+      task.description,
+      task.id,
+      task.created_at,
+      task.updated_at
+    )
+  ) offset pointer limit n_tasks;
+
+  return (
+    pointer = pointer + tasks.size(),
+    tasks = tasks
+  );
+}
+
+// Get completed tasks sorted by due date
+query get_user_completed_tasks(user_id: byte_array): (tasks: list<task_dto> ) {
+  val tasks = (task) @* {
+    task.owner.id == user_id,
+    task.completed == true
+  } (
+    @sort_desc @omit task.rowid,
+    task_dto (
+      task.due_date,
+      task.completed,
+      task.title,
+      task.description,
+      task.id,
+      task.created_at,
+      task.updated_at
+    )
+  );
+
+  return (tasks = tasks);
+}
+
+// Get pending tasks sorted by due date
+query get_user_pending_tasks(user_id: byte_array): (tasks: list<task_dto> ) {
+  val tasks = (task) @* {
+    task.owner.id == user_id,
+    task.completed == false
+  } (
+    @sort_desc @omit task.rowid,
+    task_dto (
+      task.due_date,
+      task.completed,
+      task.title,
+      task.description,
+      task.id,
+      task.created_at,
+      task.updated_at
+    )
+  );
+
+  return (tasks = tasks);
+}
+
+query get_task_count(user_id: byte_array, status: boolean): integer {
+  val user = require_user(user_id);
+  return task @ { .owner == user, .completed == status } ( @sum 1 );
+}
+
+query is_task_completed(task_id: byte_array): boolean {
+  return exists(task @? { .id == task_id, .completed == true });
+}
