@@ -1,0 +1,17 @@
+# Use the official Chromia CLI image as a base
+FROM registry.gitlab.com/chromaway/core-tools/chromia-cli/chr:latest
+
+# Set the working directory inside the container
+WORKDIR /usr/app
+
+# Copy the current directory contents into the container at /usr/app
+COPY . /usr/app
+
+# Install dependencies
+RUN chr install
+
+# Expose the port the app runs on
+EXPOSE 7740
+
+# Command to run the app
+CMD ["chr", "node", "start"]
