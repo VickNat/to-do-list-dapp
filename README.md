@@ -52,7 +52,7 @@ Check for installation on the Chromia official website:
 ### Backend Setup  
 Clone the repository:  
 ```bash  
-[git clone https://github.com/NahomKeneni/rell_backend.git](https://github.com/VickNat/to-do-list-dapp.git)  
+[git clone https://github.com/VickNat/to-do-list-dapp.git  
 cd todo-list-dapp  
 ```  
 Install dependencies using Docker (Commands may need to be prefixed with ``` docker run --rm -v "$(pwd):/usr/app" registry.gitlab.com/chromaway/core-tools/chromia-cli/chr:latest ``` if you're using docker):
